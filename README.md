@@ -3,7 +3,7 @@
 An autonomous pipeline that researched 100 apps for AI agent toolkit buildability — auth methods, self-serve access, API surface, MCP availability — with per-field evidence links, a two-pass verification loop, and a human accuracy audit.
 
 **Live report:** https://vaibhav410.github.io/YC_composio-research-agent/
-**Repository:** https://github.com/vaibhav410/YC_composio-research-agent
+
 
 Total cost to run: **$0**. Groq free tier, DuckDuckGo search, Playwright, SQLite, GitHub Pages.
 
