@@ -90,6 +90,7 @@ python scripts/run_report.py        # accuracy section appears on the dashboard
 ## Project structure
 
 ```
+DESIGN.md      full software design document (architecture, schema, verification)
 agents/        planner, researcher, verifier, pattern analyzer
 prompts/       all LLM instructions, versioned as markdown
 models/        field schemas and enums
@@ -110,6 +111,8 @@ docs/          published copy of the dashboard + public dataset (GitHub Pages / 
 The dashboard ships a precompiled, minified Tailwind stylesheet (no CDN at runtime). If you add new utility classes to `templates/index.html.j2`, rebuild it with `npx tailwindcss` against the generated `output/index.html` and swap the `<style>` block.
 
 ## Design decisions
+
+The complete software design document lives in **[DESIGN.md](DESIGN.md)** — system architecture, the per-app research state machine, the SQLite schema, the verification strategy with the confidence formula, pattern detection, risk register, and the development roadmap. The headlines:
 
 - **Pure-Python state machine** over an agent framework: 100 identical research tasks need reliability and resumability, not dynamic planning.
 - **SQLite checkpoints per app**: free-tier rate limits mean the run *will* be interrupted; restart cost is one app, not one hundred.
