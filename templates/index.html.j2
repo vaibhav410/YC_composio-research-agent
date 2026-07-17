@@ -11,6 +11,7 @@
 <title>Composio App Research Agent — 100 App Case Study</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" as="style">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232563EB'/%3E%3Cpath d='M4 12V7M8 12V4M12 12V9' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
@@ -291,18 +292,12 @@ canvas { max-height: 280px; max-width: 100%; }
 
 <script type="application/json" id="dataset">{{ dataset_json }}</script>
 <script type="application/json" id="statsdata">{{ stats_json }}</script>
-<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-<script defer src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', () => {
 const apps = JSON.parse(document.getElementById('dataset').textContent);
 const stats = JSON.parse(document.getElementById('statsdata').textContent);
 
 const C = { accent:'#2563EB', ok:'#16A34A', warn:'#F59E0B', bad:'#DC2626', sub:'#6B7280', line:'#E5E7EB', ink:'#111827' };
-Chart.defaults.font.family = 'Geist, system-ui, sans-serif';
-Chart.defaults.color = C.sub;
-Chart.defaults.borderColor = C.line;
-
 function hbar(id, obj, colorFor){
   const entries = Object.entries(obj).sort((a,b)=>b[1]-a[1]);
   new Chart(document.getElementById(id), {
@@ -324,10 +319,15 @@ function hbar(id, obj, colorFor){
 }
 
 const verdictColor = v => ({ BUILD_NOW: C.ok, BUILD_WITH_CAVEATS: C.warn, OUTREACH_REQUIRED: C.bad, BLOCKED: C.bad }[v] || C.sub);
-hbar('chartAuth', stats.auth_distribution);
-hbar('chartCategory', Object.fromEntries(Object.entries(stats.gating_by_category).map(([cat, d]) => [cat, Object.values(d).reduce((a,b)=>a+b,0)])));
-hbar('chartApi', stats.api_type_distribution);
-hbar('chartBuild', stats.buildability_distribution, verdictColor);
+function initCharts(){
+  Chart.defaults.font.family = 'Geist, system-ui, sans-serif';
+  Chart.defaults.color = C.sub;
+  Chart.defaults.borderColor = C.line;
+  hbar('chartAuth', stats.auth_distribution);
+  hbar('chartCategory', Object.fromEntries(Object.entries(stats.gating_by_category).map(([cat, d]) => [cat, Object.values(d).reduce((a,b)=>a+b,0)])));
+  hbar('chartApi', stats.api_type_distribution);
+  hbar('chartBuild', stats.buildability_distribution, verdictColor);
+}
 
 const steps = ['CSV','Planner','Search','Crawler','Groq','Verification','SQLite','HTML Report'];
 document.getElementById('workflow').innerHTML = steps.map((s,i)=>`
@@ -387,7 +387,12 @@ document.querySelectorAll('th[data-k]').forEach(th => th.addEventListener('click
 }));
 render();
 
-lucide.createIcons();
+const loadScript = src => new Promise(r => { const s = document.createElement('script'); s.src = src; s.onload = r; document.head.appendChild(s); });
+const loadLibs = () => {
+  loadScript('https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js').then(initCharts);
+  loadScript('https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js').then(() => lucide.createIcons());
+};
+document.readyState === 'complete' ? loadLibs() : window.addEventListener('load', loadLibs);
 
 const io = new IntersectionObserver(entries => entries.forEach(e => {
   if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
