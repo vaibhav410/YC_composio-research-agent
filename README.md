@@ -7,6 +7,27 @@ An autonomous pipeline that researched 100 apps for AI agent toolkit buildabilit
 
 Total cost to run: **$0**. Groq free tier, DuckDuckGo search, Playwright, SQLite, GitHub Pages.
 
+## Preview
+
+<a href="https://yc-composio-research-agent.vercel.app/">
+  <img src="assets/preview-dashboard.png" alt="Composio App Research Agent — executive summary dashboard" width="100%">
+</a>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="assets/preview-charts.png" alt="Distribution charts — authentication, category, API surface and buildability">
+    </td>
+    <td width="50%" valign="top">
+      <img src="assets/preview-table.png" alt="Research table with per-app auth, API, gating, MCP and evidence links">
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://yc-composio-research-agent.vercel.app/"><strong>Open the live report →</strong></a>
+</p>
+
 ## TL;DR of the findings
 
 Open the live report — the headline patterns sit at the top. In short: which auth dominates, which categories are self-serve vs partner-gated, the most common blockers, and the easy-win list Composio could build this week.

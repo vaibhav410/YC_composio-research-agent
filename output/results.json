@@ -534,23 +534,28 @@
     "category": "Customer Service",
     "description": "AI-first service platform for customer and employee service",
     "auth_methods": [
-      "UNKNOWN"
+      "API tokens, OAuth access tokens, Global OAuth access tokens, JWT"
     ],
     "gating": "SELF_SERVE",
-    "api_type": "UNKNOWN",
+    "api_type": "GraphQL",
     "api_breadth": "Comprehensive",
     "mcp_available": "OFFICIAL",
     "buildability": "UNKNOWN",
     "main_blocker": "not enough verified facts to decide",
-    "status": "RESEARCHED",
-    "research_pass": 1,
-    "updated_at": "2026-07-16T20:05:50+00:00",
-    "confidence": 0.81,
+    "status": "VERIFIED",
+    "research_pass": 2,
+    "updated_at": "2026-07-17T18:03:50+00:00",
+    "confidence": 0.84,
     "confidence_reasons": {
-      "auth_methods": "cited from official help center; single source only; explicitly stated in the page text; confirmed by independent second research pass",
-      "gating": "cited from official product site; single source only; explicitly stated in the page text",
       "category": "cited from official product site; single source only; explicitly stated in the page text",
-      "description": "cited from official product site; single source only; explicitly stated in the page text"
+      "description": "cited from official product site; single source only; explicitly stated in the page text",
+      "auth_methods": "cited from official developer docs; 2 independent sources agree; explicitly stated in the page text; confirmed by independent second research pass",
+      "gating": "cited from official product site; single source only; explicitly stated in the page text",
+      "api_type": "cited from official developer docs; single source only; explicitly stated in the page text; confirmed by independent second research pass",
+      "api_breadth": "cited from official product site; single source only; explicitly stated in the page text",
+      "mcp_available": "cited from official product site; single source only; explicitly stated in the page text",
+      "buildability": "derived by rule engine from auth, gating and api type; inherits their weakest confidence",
+      "main_blocker": "derived by rule engine from auth, gating and api type; inherits their weakest confidence"
     },
     "evidence": {
       "category": "https://zendesk.com",
@@ -560,7 +565,8 @@
       "mcp_available": "https://zendesk.com",
       "buildability": "https://zendesk.com",
       "main_blocker": "https://zendesk.com",
-      "auth_methods": "https://support.zendesk.com/hc/en-us/articles/4408831452954-How-can-I-authenticate-API-requests"
+      "auth_methods": "https://support.zendesk.com/hc/en-us/articles/4408831452954-How-can-I-authenticate-API-requests",
+      "api_type": "https://developer.zendesk.com/api-reference/sales-crm/search/graphql/"
     },
     "evidence_types": {
       "category": "product_docs",
@@ -570,7 +576,8 @@
       "mcp_available": "product_docs",
       "buildability": "product_docs",
       "main_blocker": "product_docs",
-      "auth_methods": "help_center"
+      "auth_methods": "help_center",
+      "api_type": "developer_docs"
     }
   },
   {
@@ -1336,9 +1343,13 @@
     "status": "RESEARCHED",
     "research_pass": 1,
     "updated_at": "2026-07-17T11:46:22+00:00",
-    "confidence": 0.86,
+    "confidence": 0.77,
     "confidence_reasons": {
-      "category": "cited from official developer docs; single source only; explicitly stated in the page text"
+      "category": "cited from official developer docs; single source only; explicitly stated in the page text",
+      "description": "cited from official product site; 2 independent sources agree; model could not ground the answer; capped: missing supporting quote",
+      "auth_methods": "cited from official developer docs; single source only; explicitly stated in the page text",
+      "gating": "cited from official developer docs; single source only; explicitly stated in the page text",
+      "api_type": "cited from official developer docs; single source only; explicitly stated in the page text"
     },
     "evidence": {
       "category": "https://discord.com/developers/docs/social-sdk/authentication.html",
@@ -5166,22 +5177,42 @@
     "name": "YouTube Transcript",
     "category_hint": "AI Research and Media",
     "website_hint": "transcriptapi.com",
-    "category": null,
-    "description": null,
-    "auth_methods": [],
-    "gating": null,
-    "api_type": null,
-    "api_breadth": null,
-    "mcp_available": null,
-    "buildability": null,
-    "main_blocker": null,
-    "status": "UNRESOLVED",
+    "category": "YouTube Transcript API",
+    "description": "Extract YouTube video transcripts, search videos, browse channels, and extract playlists via REST API or YouTube MCP",
+    "auth_methods": [
+      "API_KEY"
+    ],
+    "gating": "SELF_SERVE",
+    "api_type": "REST",
+    "api_breadth": "full",
+    "mcp_available": "OFFICIAL",
+    "buildability": "BUILD_NOW",
+    "main_blocker": "NONE",
+    "status": "RESEARCHED",
     "research_pass": 1,
-    "updated_at": "2026-07-17T16:28:10+00:00",
+    "updated_at": "2026-07-17T18:00:02+00:00",
     "confidence": null,
     "confidence_reasons": {},
-    "evidence": {},
-    "evidence_types": {}
+    "evidence": {
+      "category": "https://transcriptapi.com",
+      "description": "https://transcriptapi.com",
+      "auth_methods": "https://transcriptapi.com/docs/api/",
+      "gating": "https://transcriptapi.com",
+      "api_type": "https://transcriptapi.com/docs/api/",
+      "api_breadth": "https://transcriptapi.com",
+      "mcp_available": "https://transcriptapi.com",
+      "buildability": "https://transcriptapi.com"
+    },
+    "evidence_types": {
+      "category": "developer_docs",
+      "description": "developer_docs",
+      "auth_methods": "developer_docs",
+      "gating": "developer_docs",
+      "api_type": "developer_docs",
+      "api_breadth": "developer_docs",
+      "mcp_available": "developer_docs",
+      "buildability": "developer_docs"
+    }
   },
   {
     "id": 100,

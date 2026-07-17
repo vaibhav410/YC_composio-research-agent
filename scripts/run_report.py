@@ -3,7 +3,15 @@ from datetime import date
 from pathlib import Path
 
 from common import load_config, open_db
-from make_public_dataset import normalize_auth, to_public
+from make_public_dataset import normalize_api_type, normalize_auth, to_public
+
+
+def clean_api_chart(dist: dict) -> dict:
+    merged = {}
+    for label, count in dist.items():
+        key = normalize_api_type(label if isinstance(label, str) else "")
+        merged[key] = merged.get(key, 0) + count
+    return dict(sorted(merged.items(), key=lambda x: -x[1]))
 
 
 def clean_auth_chart(dist: dict) -> dict:
@@ -77,6 +85,7 @@ def main():
 
     stats = compute_stats(conn)
     stats["auth_distribution"] = clean_auth_chart(stats["auth_distribution"])
+    stats["api_type_distribution"] = clean_api_chart(stats["api_type_distribution"])
     accuracy = compute_accuracy(conn)
     insights = narrate_insights(stats, cfg["model"])
     if not insights:
