@@ -1,0 +1,10 @@
+.env
+.env.local
+.env.*.local
+__pycache__/
+*.pyc
+research.db
+data/research.db
+data/page_cache/
+~$*
+.DS_Store

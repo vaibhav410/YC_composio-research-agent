@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Composio App Research Agent — 100 App Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Geist', 'system-ui', 'sans-serif'] },
+      colors: {
+        page: '#FAFAFA', card: '#FFFFFF',
+        ink: '#111827', sub: '#6B7280', line: '#E5E7EB',
+        accent: '#2563EB', ok: '#16A34A', warn: '#F59E0B', bad: '#DC2626'
+      },
+      borderRadius: { xl2: '12px' }
+    }
+  }
+}
+</script>
+<style>
+html { scroll-behavior: smooth; }
+.reveal { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.card-hover { transition: border-color .15s ease, box-shadow .15s ease; }
+.card-hover:hover { border-color: #d1d5db; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+th[data-k] { cursor: pointer; user-select: none; }
+canvas { max-height: 280px; }
+</style>
+</head>
+<body class="bg-page text-ink font-sans antialiased" data-palette="#2563EB,#16A34A,#F59E0B,#DC2626">
+
+<section class="max-w-6xl mx-auto px-6 pt-20 pb-16 reveal">
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="text-xs font-medium text-sub border border-line bg-card rounded-full px-3 py-1">{{ stats.total }} Apps</span>
+    <span class="text-xs font-medium text-sub border border-line bg-card rounded-full px-3 py-1">{{ (100 * stats.status_distribution.get('VERIFIED', 0) / stats.total)|round|int }}% Verified</span>
+    <span class="text-xs font-medium text-sub border border-line bg-card rounded-full px-3 py-1">Groq</span>
+    <span class="text-xs font-medium text-sub border border-line bg-card rounded-full px-3 py-1">Python</span>
+    <span class="text-xs font-medium text-sub border border-line bg-card rounded-full px-3 py-1">SQLite</span>
+    <span class="text-xs font-medium text-sub border border-line bg-card rounded-full px-3 py-1">Static HTML</span>
+  </div>
+  <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Composio App Research Agent</h1>
+  <p class="mt-4 text-lg text-sub max-w-2xl">Automated research and verification across {{ stats.total }} SaaS applications — auth methods, self-serve access, API surface, MCP availability — with cited evidence and a measured accuracy loop.</p>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <a href="{{ repo_url }}" class="inline-flex items-center gap-2 bg-ink text-white text-sm font-medium rounded-xl2 px-5 py-2.5 hover:bg-gray-800 transition-colors"><i data-lucide="github" class="w-4 h-4"></i>View Repository</a>
+    <a href="results_public.csv" download class="inline-flex items-center gap-2 bg-card border border-line text-sm font-medium rounded-xl2 px-5 py-2.5 card-hover"><i data-lucide="download" class="w-4 h-4"></i>Download Dataset</a>
+  </div>
+  <p class="mt-6 text-xs text-sub">Run {{ run_date }} · {{ model }} · total cost $0</p>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Executive Summary</h2>
+  <p class="mt-2 text-sub max-w-3xl text-sm leading-6">An autonomous pipeline researched each app from official documentation, scored its own confidence per field, re-verified weak answers with an independent second pass, and had its output audited by hand on a stratified sample. Verdicts come from a deterministic rule engine — the model only extracts against evidence, and fields without supporting evidence are preserved as UNKNOWN rather than inferred.</p>
+  <div class="mt-8 grid grid-cols-2 lg:grid-cols-5 gap-4">
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <p class="text-3xl font-bold tracking-tight">{{ stats.total }}</p>
+      <p class="mt-1 text-sm text-sub">Apps Researched</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <p class="text-3xl font-bold tracking-tight">{{ pct_self_serve }}%</p>
+      <p class="mt-1 text-sm text-sub">Self Serve</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <p class="text-3xl font-bold tracking-tight">{{ stats.auth_distribution.get('OAUTH2', 0) }}</p>
+      <p class="mt-1 text-sm text-sub">OAuth Apps</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <p class="text-3xl font-bold tracking-tight text-ok">{{ pct_buildable }}%</p>
+      <p class="mt-1 text-sm text-sub">Build Ready</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <p class="text-sm mt-0.5"><span class="font-bold">{{ coverage.researched }}</span> <span class="text-sub">successful research</span></p>
+      <p class="text-sm mt-1"><span class="font-bold text-ok">{{ coverage.verified }}</span> <span class="text-sub">verified</span></p>
+      <p class="text-sm mt-1"><span class="font-bold text-warn">{{ coverage.unresolved }}</span> <span class="text-sub">unresolved</span></p>
+      <p class="mt-2 text-sm text-sub">Coverage</p>
+    </div>
+  </div>
+  <div class="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="bg-card border border-line rounded-xl2 p-4 card-hover">
+      <p class="text-xl font-bold tracking-tight">{{ stats.avg_confidence if stats.avg_confidence is not none else '—' }}</p>
+      <p class="mt-0.5 text-xs text-sub">average field confidence</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-4 card-hover">
+      <p class="text-xl font-bold tracking-tight">{{ stats.evidence_count }}</p>
+      <p class="mt-0.5 text-xs text-sub">evidence snippets collected</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-4 card-hover">
+      <p class="text-xl font-bold tracking-tight">{{ stats.official_source_pct }}%</p>
+      <p class="mt-0.5 text-xs text-sub">evidence from official sources</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-4 card-hover">
+      <p class="text-xl font-bold tracking-tight">{% if stats.stage_durations.research %}{{ (stats.stage_durations.research / 60)|round|int }}m / {{ ((stats.stage_durations.get('verification', 0)) / 60)|round|int }}m{% else %}—{% endif %}</p>
+      <p class="mt-0.5 text-xs text-sub">research / verification runtime</p>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Key Insights</h2>
+  <p class="mt-1 text-sm text-sub">Computed in Pandas from the verified dataset — the model never produces a number.</p>
+  <div class="mt-6 grid md:grid-cols-2 gap-4">
+    {% for insight in insights %}
+    <div class="bg-card border border-line rounded-xl2 p-5 flex gap-4 card-hover">
+      <div class="shrink-0 w-9 h-9 rounded-xl2 bg-page border border-line flex items-center justify-center">
+        <i data-lucide="{{ ['key-round','trending-up','lock','plug-zap','lightbulb','bar-chart-3'][loop.index0 % 6] }}" class="w-4 h-4 text-accent"></i>
+      </div>
+      <p class="text-sm leading-6">{{ insight }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Distribution</h2>
+  <div class="mt-6 grid md:grid-cols-2 gap-4">
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <h3 class="text-sm font-medium">Authentication Distribution</h3>
+      <p class="text-xs text-sub mt-0.5 mb-4">apps supporting each method (multi-label)</p>
+      <canvas id="chartAuth" role="img" aria-label="Authentication methods bar chart"></canvas>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <h3 class="text-sm font-medium">Category Distribution</h3>
+      <p class="text-xs text-sub mt-0.5 mb-4">research set composition</p>
+      <canvas id="chartCategory" role="img" aria-label="Category distribution bar chart"></canvas>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <h3 class="text-sm font-medium">API Surface</h3>
+      <p class="text-xs text-sub mt-0.5 mb-4">documented public API types</p>
+      <canvas id="chartApi" role="img" aria-label="API surface bar chart"></canvas>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <h3 class="text-sm font-medium">Buildability</h3>
+      <p class="text-xs text-sub mt-0.5 mb-4">deterministic rule-engine verdicts</p>
+      <canvas id="chartBuild" role="img" aria-label="Buildability verdicts bar chart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Agent Workflow</h2>
+  <p class="mt-1 text-sm text-sub">Each stage checkpoints to SQLite, so the pipeline resumes where it stopped.</p>
+  <div class="mt-6 bg-card border border-line rounded-xl2 p-6 overflow-x-auto">
+    <div class="flex items-center gap-3 min-w-max" id="workflow"></div>
+  </div>
+  <p class="mt-4 text-sm text-sub leading-6 max-w-3xl">Every field must cite a source URL and a verbatim quote — anything unevidenced becomes <span class="font-medium text-ink">UNKNOWN</span> by construction. Sources are ranked official developer docs first. Fields below {{ threshold }} confidence trigger an independent second pass that never sees the first pass's reasoning, and cited quotes are re-checked against the live page. Where a human was needed: the accuracy audit, {{ unresolved_count }} unresolved apps, and ambiguous gating tiers.</p>
+</section>
+
+{% if accuracy.available %}
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Verification</h2>
+  <p class="mt-1 text-sm text-sub">{{ accuracy.checks }} field checks across {{ accuracy.apps_sampled }} hand-audited apps, stratified across categories.</p>
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="bg-card border border-line rounded-xl2 p-5">
+      <p class="text-3xl font-bold tracking-tight text-sub">{{ (accuracy.pass1_accuracy*100)|round(1) }}%</p>
+      <p class="mt-1 text-sm text-sub">First Pass Accuracy</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5">
+      <p class="text-3xl font-bold tracking-tight">{{ stats.corrections|length }}</p>
+      <p class="mt-1 text-sm text-sub">Fields Corrected by the Loop</p>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5 border-ok/40">
+      <p class="text-3xl font-bold tracking-tight text-ok">{{ (accuracy.final_accuracy*100)|round(1) }}%</p>
+      <p class="mt-1 text-sm text-sub">Final Accuracy</p>
+    </div>
+  </div>
+  <div class="mt-6 grid lg:grid-cols-2 gap-4">
+    <div class="bg-card border border-line rounded-xl2 p-5 overflow-x-auto">
+      <h3 class="text-sm font-medium mb-3">Accuracy by field</h3>
+      <table class="w-full text-sm">
+        <thead><tr class="text-left text-xs text-sub border-b border-line">
+          <th class="py-2 pr-4 font-medium">Field</th><th class="py-2 pr-4 font-medium">First pass</th><th class="py-2 pr-4 font-medium">Final</th><th class="py-2 font-medium">Checks</th>
+        </tr></thead>
+        <tbody>
+        {% for field, row in accuracy.per_field.items() %}
+        <tr class="border-b border-line/60">
+          <td class="py-2 pr-4 font-medium">{{ field }}</td>
+          <td class="py-2 pr-4 text-sub">{{ (row.pass1*100)|round|int }}%</td>
+          <td class="py-2 pr-4 {{ 'text-ok' if row.final >= row.pass1 else 'text-bad' }}">{{ (row.final*100)|round|int }}%</td>
+          <td class="py-2 text-sub">{{ row.checks|int }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="bg-card border border-line rounded-xl2 p-5">
+      <h3 class="text-sm font-medium mb-3">Misses, shown honestly</h3>
+      {% for miss in accuracy.misses %}
+      <div class="text-sm py-2 border-b border-line/60 last:border-0">
+        <span class="font-medium">{{ app_names.get(miss.app_id, miss.app_id) }}</span>
+        <span class="text-sub">· {{ miss.field_name }} — agent said</span> {{ miss.agent_value }}<span class="text-sub">, truth is</span> <span class="font-medium">{{ miss.human_value }}</span>
+      </div>
+      {% else %}
+      <p class="text-sm text-sub">No misses in the audited sample.</p>
+      {% endfor %}
+      {% if stats.corrections %}
+      <h3 class="text-sm font-medium mt-5 mb-2">Corrected by the verification loop</h3>
+      {% for c in stats.corrections[:8] %}
+      <p class="text-sm py-1"><span class="font-medium">{{ app_names.get(c.app_id, c.app_id) }}</span> <span class="text-sub">· {{ c.field_name }}:</span> <s class="text-sub">{{ c.old_value }}</s> → {{ c.new_value }}</p>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Research Table</h2>
+  <p class="mt-1 text-sm text-sub">All {{ stats.total }} apps. Click headers to sort, hover a verdict for the confidence reasoning, click any value for its evidence.</p>
+  <div class="mt-5 flex flex-wrap gap-2">
+    <div class="relative flex-1 min-w-[220px]">
+      <i data-lucide="search" class="w-4 h-4 text-sub absolute left-3 top-1/2 -translate-y-1/2"></i>
+      <input id="search" type="text" placeholder="Search apps, blockers, descriptions" class="w-full bg-card border border-line rounded-xl2 pl-9 pr-3 py-2 text-sm placeholder:text-sub focus:outline-none focus:border-accent">
+    </div>
+    <select id="catFilter" class="bg-card border border-line rounded-xl2 px-3 py-2 text-sm text-ink focus:outline-none"><option value="">Category</option></select>
+    <select id="authFilter" class="bg-card border border-line rounded-xl2 px-3 py-2 text-sm text-ink focus:outline-none"><option value="">Auth</option></select>
+    <select id="buildFilter" class="bg-card border border-line rounded-xl2 px-3 py-2 text-sm text-ink focus:outline-none"><option value="">Buildability</option></select>
+  </div>
+  <div class="mt-4 bg-card border border-line rounded-xl2 overflow-auto max-h-[640px]">
+    <table class="w-full text-sm min-w-[1080px]" id="appsTable">
+      <thead class="sticky top-0 bg-page/95 backdrop-blur border-b border-line">
+        <tr class="text-left text-xs text-sub">
+          <th data-k="name" class="py-3 px-4 font-medium">App</th>
+          <th data-k="category_hint" class="py-3 px-3 font-medium">Category</th>
+          <th data-k="auth" class="py-3 px-3 font-medium">Auth</th>
+          <th data-k="api_type" class="py-3 px-3 font-medium">API</th>
+          <th data-k="gating" class="py-3 px-3 font-medium">Self Serve</th>
+          <th data-k="mcp_available" class="py-3 px-3 font-medium">MCP</th>
+          <th data-k="buildability" class="py-3 px-3 font-medium">Verdict</th>
+          <th class="py-3 px-3 font-medium">Evidence</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p id="rowCount" class="mt-2 text-xs text-sub"></p>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Honest Findings</h2>
+  <p class="mt-1 text-sm text-sub">What the agent could not determine — kept visible, never guessed.</p>
+  <div class="mt-6 grid sm:grid-cols-2 gap-4" id="failureCards">
+    {% set kinds = [('Context Limit', 'gauge'), ('Provider Quota', 'timer'), ('Low Confidence', 'help-circle'), ('Partner Gated', 'handshake'), ('No Public API', 'unplug'), ('No Official Docs', 'file-question'), ('Human Review Required', 'user-check')] %}
+    {% for kind, icon in kinds %}
+    {% set items = failures | selectattr('kind', 'equalto', kind) | list %}
+    {% if items %}
+    <div class="bg-card border border-line rounded-xl2 p-5 card-hover">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-lucide="{{ icon }}" class="w-4 h-4 text-warn"></i>
+        <h3 class="text-sm font-medium">{{ kind }} <span class="text-sub font-normal">({{ items|length }})</span></h3>
+      </div>
+      <div class="max-h-72 overflow-y-auto pr-1">
+      {% for f in items %}
+      <p class="text-sm py-1.5 border-b border-line/60 last:border-0"><span class="font-medium">{{ f.name }}</span> <span class="text-sub">— {{ f.detail }}</span></p>
+      {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Pipeline Limitations</h2>
+  <div class="mt-4 bg-card border border-line rounded-xl2 p-5 max-w-3xl">
+    <ul class="text-sm text-sub leading-6 space-y-2">
+      <li class="flex gap-2"><i data-lucide="info" class="w-4 h-4 mt-1 shrink-0 text-accent"></i><span>Unresolved apps are preserved as UNRESOLVED because the evidence collected was insufficient — the pipeline never fills gaps with plausible guesses.</span></li>
+      <li class="flex gap-2"><i data-lucide="info" class="w-4 h-4 mt-1 shrink-0 text-accent"></i><span>Research runs on a free-tier token budget; token-dense documentation pages are truncated to fit the model's context allowance, which can reduce extraction depth for some apps.</span></li>
+      <li class="flex gap-2"><i data-lucide="info" class="w-4 h-4 mt-1 shrink-0 text-accent"></i><span>Findings reflect public documentation at run time ({{ run_date }}); APIs, pricing tiers and MCP availability change.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 pb-16 reveal">
+  <h2 class="text-xl font-semibold tracking-tight">Tech Stack</h2>
+  <div class="mt-5 flex flex-wrap gap-3">
+    {% for name, icon in [('Python','code-2'), ('Groq','cpu'), ('SQLite','database'), ('DuckDuckGo','search'), ('Playwright','app-window'), ('Chart.js','bar-chart-3'), ('Tailwind','wind')] %}
+    <span class="inline-flex items-center gap-2 bg-card border border-line rounded-xl2 px-4 py-2 text-sm text-sub card-hover"><i data-lucide="{{ icon }}" class="w-4 h-4 text-ink"></i>{{ name }}</span>
+    {% endfor %}
+  </div>
+</section>
+
+<footer class="border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-sub">
+    <div class="flex gap-5">
+      <a href="{{ repo_url }}" class="hover:text-ink transition-colors inline-flex items-center gap-1.5"><i data-lucide="github" class="w-4 h-4"></i>GitHub Repository</a>
+      <a href="{{ repo_url }}#readme" class="hover:text-ink transition-colors inline-flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4"></i>README</a>
+      <a href="results_public.json" download class="hover:text-ink transition-colors inline-flex items-center gap-1.5"><i data-lucide="database" class="w-4 h-4"></i>Dataset (JSON)</a>
+    </div>
+    <p>Generated using AI-assisted research with human verification · {{ run_date }}</p>
+  </div>
+</footer>
+
+<script type="application/json" id="dataset">{{ dataset_json }}</script>
+<script type="application/json" id="statsdata">{{ stats_json }}</script>
+<script>
+const apps = JSON.parse(document.getElementById('dataset').textContent);
+const stats = JSON.parse(document.getElementById('statsdata').textContent);
+
+const C = { accent:'#2563EB', ok:'#16A34A', warn:'#F59E0B', bad:'#DC2626', sub:'#6B7280', line:'#E5E7EB', ink:'#111827' };
+Chart.defaults.font.family = 'Geist, system-ui, sans-serif';
+Chart.defaults.color = C.sub;
+Chart.defaults.borderColor = C.line;
+
+function hbar(id, obj, colorFor){
+  const entries = Object.entries(obj).sort((a,b)=>b[1]-a[1]);
+  new Chart(document.getElementById(id), {
+    type: 'bar',
+    data: {
+      labels: entries.map(e=>e[0]),
+      datasets: [{ data: entries.map(e=>e[1]), backgroundColor: entries.map(e=>colorFor ? colorFor(e[0]) : C.accent), borderRadius: 4, barThickness: 16 }]
+    },
+    options: {
+      indexAxis: 'y', maintainAspectRatio: false,
+      layout: { padding: { left: 6 } },
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: C.ink, cornerRadius: 8, padding: 10, displayColors: false } },
+      scales: {
+        x: { grid: { color: C.line }, ticks: { precision: 0 } },
+        y: { grid: { display: false }, ticks: { font: { size: 11 }, callback(v){ return String(this.getLabelForValue(v)).replaceAll('_', ' '); } } }
+      }
+    }
+  });
+}
+
+const verdictColor = v => ({ BUILD_NOW: C.ok, BUILD_WITH_CAVEATS: C.warn, OUTREACH_REQUIRED: C.bad, BLOCKED: C.bad }[v] || C.sub);
+hbar('chartAuth', stats.auth_distribution);
+hbar('chartCategory', Object.fromEntries(Object.entries(stats.gating_by_category).map(([cat, d]) => [cat, Object.values(d).reduce((a,b)=>a+b,0)])));
+hbar('chartApi', stats.api_type_distribution);
+hbar('chartBuild', stats.buildability_distribution, verdictColor);
+
+const steps = ['CSV','Planner','Search','Crawler','Groq','Verification','SQLite','HTML Report'];
+document.getElementById('workflow').innerHTML = steps.map((s,i)=>`
+  <div class="flex items-center gap-3">
+    <div class="bg-page border border-line rounded-xl2 px-4 py-2.5 text-sm font-medium whitespace-nowrap">${s}</div>
+    ${i < steps.length-1 ? '<i data-lucide="arrow-right" class="w-4 h-4 text-sub shrink-0"></i>' : ''}
+  </div>`).join('');
+
+const badge = (v, tone) => v ? `<span class="inline-block text-xs font-medium rounded-md px-2 py-0.5 ${tone}">${v}</span>` : '<span class="text-sub">—</span>';
+const tones = {
+  BUILD_NOW:'bg-green-50 text-ok', BUILD_WITH_CAVEATS:'bg-amber-50 text-warn', OUTREACH_REQUIRED:'bg-red-50 text-bad', BLOCKED:'bg-red-50 text-bad',
+  SELF_SERVE:'bg-green-50 text-ok', FREE_WITH_APPROVAL:'bg-amber-50 text-warn', PAID_ONLY:'bg-amber-50 text-warn', PARTNER_GATED:'bg-red-50 text-bad',
+  OFFICIAL:'bg-green-50 text-ok', COMMUNITY:'bg-amber-50 text-warn', NONE_FOUND:'bg-gray-100 text-sub', UNKNOWN:'bg-gray-100 text-sub'
+};
+
+let sortKey = 'name', sortDir = 1;
+const val = (a,k) => k === 'auth' ? (a.auth_methods||[]).join(',') : (a[k] ?? '');
+
+function render(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const cat = document.getElementById('catFilter').value;
+  const auth = document.getElementById('authFilter').value;
+  const build = document.getElementById('buildFilter').value;
+  const rows = apps
+    .filter(a => !cat || a.category_hint === cat)
+    .filter(a => !auth || (a.auth_methods||[]).includes(auth))
+    .filter(a => !build || a.buildability === build)
+    .filter(a => !q || JSON.stringify(a).toLowerCase().includes(q))
+    .sort((a,b) => { const x = val(a,sortKey), y = val(b,sortKey); return (x>y?1:x<y?-1:0)*sortDir; });
+
+  document.querySelector('#appsTable tbody').innerHTML = rows.map(a => {
+    const ev = a.evidence || {};
+    const link = (html, f) => ev[f] ? `<a href="${ev[f]}" target="_blank" rel="noopener" class="hover:underline">${html}</a>` : html;
+    const evLinks = [...new Set(Object.values(ev))].slice(0,2)
+      .map((u,i)=>`<a href="${u}" target="_blank" rel="noopener" class="text-accent hover:underline">[${i+1}]</a>`).join(' ');
+    const why = a.confidence_reasons ? Object.entries(a.confidence_reasons).map(([f,r])=>`${f}: ${r}`).join('\n') : '';
+    return `<tr class="border-b border-line/60 hover:bg-page/60">
+      <td class="py-2.5 px-4"><span class="font-medium">${a.name}</span><p class="text-xs text-sub max-w-[240px] truncate">${a.description && a.description !== 'UNKNOWN' ? a.description : ''}</p></td>
+      <td class="py-2.5 px-3 text-sub whitespace-nowrap">${a.category_hint}</td>
+      <td class="py-2.5 px-3">${link((a.auth_methods||[]).join(', ') || '—', 'auth_methods')}</td>
+      <td class="py-2.5 px-3">${link(a.api_type || '—', 'api_type')}</td>
+      <td class="py-2.5 px-3">${link(badge(a.gating, tones[a.gating]||tones.UNKNOWN), 'gating')}</td>
+      <td class="py-2.5 px-3">${link(badge(a.mcp_available, tones[a.mcp_available]||tones.UNKNOWN), 'mcp_available')}</td>
+      <td class="py-2.5 px-3 whitespace-nowrap"><span title="${why.replace(/"/g,'&quot;')}">${badge(a.buildability, tones[a.buildability]||tones.UNKNOWN)}${a.confidence !== null && a.confidence !== undefined ? `<span class="ml-1.5 text-xs text-sub">${a.confidence.toFixed(2)}</span>` : ''}</span></td>
+      <td class="py-2.5 px-3 whitespace-nowrap">${evLinks || '<span class="text-sub">—</span>'}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('rowCount').textContent = `${rows.length} of ${apps.length} apps`;
+}
+
+const addOptions = (id, values) => values.forEach(v => document.getElementById(id).insertAdjacentHTML('beforeend', `<option>${v}</option>`));
+addOptions('catFilter', [...new Set(apps.map(a=>a.category_hint))]);
+addOptions('authFilter', [...new Set(apps.flatMap(a=>a.auth_methods||[]))].sort());
+addOptions('buildFilter', [...new Set(apps.map(a=>a.buildability).filter(Boolean))]);
+['search','catFilter','authFilter','buildFilter'].forEach(id =>
+  document.getElementById(id).addEventListener(id==='search'?'input':'change', render));
+document.querySelectorAll('th[data-k]').forEach(th => th.addEventListener('click', () => {
+  const k = th.dataset.k; sortDir = sortKey === k ? -sortDir : 1; sortKey = k; render();
+}));
+render();
+
+lucide.createIcons();
+
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

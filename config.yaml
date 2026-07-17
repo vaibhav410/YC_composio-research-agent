@@ -1,0 +1,13 @@
+model: openrouter/meta-llama/llama-3.3-70b-instruct:free
+fallback_model: groq/llama-3.1-8b-instant
+requests_per_minute: 14
+max_pages_per_app: 4
+page_char_limit: 9000
+context_char_limit: 12000
+confidence_threshold: 0.75
+unresolved_floor: 0.4
+sample_size: 15
+sample_seed: 42
+db_path: data/research.db
+apps_csv: data/apps.csv
+output_dir: output
