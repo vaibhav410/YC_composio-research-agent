@@ -1,7 +1,7 @@
 [
   {
     "app_name": "Salesforce",
-    "category": "CRM",
+    "category": "CRM and Sales",
     "description": "A unified set of applications powered by agentic AI and data to help every department work as one",
     "auth_methods": [
       "OAUTH2"
@@ -23,14 +23,14 @@
   },
   {
     "app_name": "HubSpot",
-    "category": "Customer Relationship Management",
+    "category": "CRM and Sales",
     "description": "A platform for marketing, sales, and customer service",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "FREE_WITH_APPROVAL",
     "api_type": "REST",
-    "api_breadth": "Comprehensive",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_WITH_CAVEATS",
     "main_blocker": "credentials require an approval or app review step",
@@ -44,7 +44,7 @@
   },
   {
     "app_name": "Pipedrive",
-    "category": "Sales CRM & Pipeline Management Software",
+    "category": "CRM and Sales",
     "description": "A sales pipeline CRM designed to help small businesses manage leads, track sales activities and close more deals",
     "auth_methods": [
       "OAUTH2"
@@ -65,7 +65,7 @@
   },
   {
     "app_name": "Attio",
-    "category": "CRM",
+    "category": "CRM and Sales",
     "description": "A CRM platform that builds pipeline, advances deals, and grows accounts",
     "auth_methods": [
       "OAUTH2",
@@ -88,7 +88,7 @@
   },
   {
     "app_name": "Twenty",
-    "category": "CRM",
+    "category": "CRM and Sales",
     "description": "A custom CRM platform for building and adapting enterprise CRMs",
     "auth_methods": [
       "OAUTH2",
@@ -96,7 +96,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "BOTH",
-    "api_breadth": "schema-per-tenant APIs with CRUD on records and schema management",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -111,14 +111,14 @@
   },
   {
     "app_name": "Podio",
-    "category": "work management platform",
+    "category": "CRM and Sales",
     "description": "unify and automate work with no-code tools, flexible workflows and customizable business solutions",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "complete programmable interface to all Podio functionality",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -132,7 +132,7 @@
   },
   {
     "app_name": "Zoho CRM",
-    "category": "CRM",
+    "category": "CRM and Sales",
     "description": "AI-powered sales CRM software for growth",
     "auth_methods": [
       "OAUTH2"
@@ -153,7 +153,7 @@
   },
   {
     "app_name": "Close",
-    "category": "Sales CRM",
+    "category": "CRM and Sales",
     "description": "A sales CRM with built-in AI sales agent for calling, emailing, texting, automation, and action",
     "auth_methods": [
       "API_KEY",
@@ -161,7 +161,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Comprehensive",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -175,7 +175,7 @@
   },
   {
     "app_name": "Copper",
-    "category": "CRM",
+    "category": "CRM and Sales",
     "description": "Copper is a CRM software that helps businesses manage their entire customer journey",
     "auth_methods": [
       "OAUTH2",
@@ -183,7 +183,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "most Copper resources",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -197,7 +197,7 @@
   },
   {
     "app_name": "DealCloud",
-    "category": "CRM/Project Management",
+    "category": "CRM and Sales",
     "description": "DealCloud API for custom integrations and automation",
     "auth_methods": [
       "API_KEY",
@@ -205,7 +205,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Comprehensive",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -219,14 +219,14 @@
   },
   {
     "app_name": "Zendesk",
-    "category": "Customer Service",
+    "category": "Support and Helpdesk",
     "description": "AI-first service platform for customer and employee service",
     "auth_methods": [
       "UNKNOWN"
     ],
     "gating": "SELF_SERVE",
     "api_type": "UNKNOWN",
-    "api_breadth": "Comprehensive",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "UNKNOWN",
     "main_blocker": "not enough verified facts to decide",
@@ -239,11 +239,11 @@
   },
   {
     "app_name": "Intercom",
-    "category": "customer service platform",
+    "category": "Support and Helpdesk",
     "description": "AI-powered customer service platform",
     "auth_methods": [
       "OAUTH2",
-      "ACCESS_TOKEN"
+      "TOKEN"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
@@ -262,7 +262,7 @@
   },
   {
     "app_name": "Freshdesk",
-    "category": "Customer Service",
+    "category": "Support and Helpdesk",
     "description": "AI-powered customer service platform",
     "auth_methods": [
       "API_KEY",
@@ -270,7 +270,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Comprehensive",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -283,7 +283,7 @@
   },
   {
     "app_name": "Front",
-    "category": "Customer Service Platform",
+    "category": "Support and Helpdesk",
     "description": "A customer service platform that brings teams, conversations, and AI into one coordinated system, so customer operations stay fast, accurate, and in control.",
     "auth_methods": [
       "API_KEY",
@@ -291,7 +291,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "dramatically improve the quality and...",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -304,14 +304,14 @@
   },
   {
     "app_name": "Pylon",
-    "category": "B2B support platform",
+    "category": "Support and Helpdesk",
     "description": "Collaborative customer support platform using AI and human agents",
     "auth_methods": [
-      "Bearer"
+      "TOKEN"
     ],
     "gating": "UNKNOWN",
     "api_type": "REST",
-    "api_breadth": "Comprehensive, with multiple endpoints and features",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "UNKNOWN",
     "main_blocker": "not enough verified facts to decide",
@@ -324,14 +324,14 @@
   },
   {
     "app_name": "LiveAgent",
-    "category": "Help Desk Software & Live Chat",
+    "category": "Support and Helpdesk",
     "description": "Deliver seamless support with AI-powered help desk LiveAgent combines an all-in-one customer service platform with AI chatbot, live chat, ticketing, and call center.",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "seamless software communication, supporting actions like company retrieval and conversation creation",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -345,14 +345,14 @@
   },
   {
     "app_name": "Plain",
-    "category": "AI Support Stack",
+    "category": "Support and Helpdesk",
     "description": "Plain is AI support infrastructure that enables B2B teams to build anything â€“ no-code or all-code.",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "GRAPHQL",
-    "api_breadth": "fully featured, with no limitations in what can be done via the API vs the UI",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -367,7 +367,7 @@
   },
   {
     "app_name": "Help Scout",
-    "category": "Customer Service",
+    "category": "Support and Helpdesk",
     "description": "Help Scout is a customer service software that provides intuitive and affordable support tools, including AI-powered agents, team collaboration, and customer insights.",
     "auth_methods": [
       "API_KEY",
@@ -389,7 +389,7 @@
   },
   {
     "app_name": "Gorgias",
-    "category": "AI Agent",
+    "category": "Support and Helpdesk",
     "description": "Conversational AI platform for Ecommerce that automates routine support and personalizes the rest, with an AI Agent trained on the brand's data.",
     "auth_methods": [
       "API_KEY",
@@ -397,7 +397,7 @@
     ],
     "gating": "FREE_WITH_APPROVAL",
     "api_type": "REST",
-    "api_breadth": "full",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_WITH_CAVEATS",
     "main_blocker": "credentials require an approval or app review step",
@@ -412,7 +412,7 @@
   },
   {
     "app_name": "Gladly",
-    "category": "Customer Experience AI",
+    "category": "Support and Helpdesk",
     "description": "Gladly is the only customer experience AI purpose-built to engage customers rather than deflect them.",
     "auth_methods": [
       "API_KEY"
@@ -433,7 +433,7 @@
   },
   {
     "app_name": "Slack",
-    "category": "AI work platform and productivity tools",
+    "category": "Communications and Messaging",
     "description": "Slack connects your team. Slackbot multiplies what they can do.",
     "auth_methods": [
       "OAUTH2"
@@ -453,7 +453,7 @@
   },
   {
     "app_name": "Twilio",
-    "category": "Communications Platform as a Service",
+    "category": "Communications and Messaging",
     "description": "Twilio is a platform that empowers humans and AI agents to work together, coordinate across channels, and pick up every customer conversation where the last one left off.",
     "auth_methods": [
       "API_KEY",
@@ -476,7 +476,7 @@
   },
   {
     "app_name": "Zoho Cliq",
-    "category": "Team chat & communication software",
+    "category": "Communications and Messaging",
     "description": "Zoho Cliq streamlines business communication and fuels effortless conversations within teams and external stakeholders through organization, automation, and AI.",
     "auth_methods": [
       "API_KEY"
@@ -496,14 +496,14 @@
   },
   {
     "app_name": "Lark",
-    "category": "AI agent toolkit",
+    "category": "Communications and Messaging",
     "description": "An open, swift, and accessible way to reshape workplace experiences",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "An open platform for any",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -516,7 +516,7 @@
   },
   {
     "app_name": "Pumble",
-    "category": "Communication",
+    "category": "Communications and Messaging",
     "description": "Send 1-on-1 and group messages, organize work conversation by topic, share files, images, and links with team, and more",
     "auth_methods": [
       "OAUTH2",
@@ -539,7 +539,7 @@
   },
   {
     "app_name": "Discord",
-    "category": "Social Media",
+    "category": "Communications and Messaging",
     "description": "Discord Social SDK allows developers to authenticate users and access their data",
     "auth_methods": [
       "OAUTH2",
@@ -561,7 +561,7 @@
   },
   {
     "app_name": "Telegram",
-    "category": "messaging",
+    "category": "Communications and Messaging",
     "description": "a messaging platform with APIs for building custom clients and bots",
     "auth_methods": [
       "OAUTH2",
@@ -583,7 +583,7 @@
   },
   {
     "app_name": "WhatsApp Business",
-    "category": "messaging",
+    "category": "Communications and Messaging",
     "description": "Enterprise-grade APIs for messaging and calling",
     "auth_methods": [
       "OAUTH"
@@ -603,7 +603,7 @@
   },
   {
     "app_name": "Aircall",
-    "category": "customer communications platform",
+    "category": "Communications and Messaging",
     "description": "AI-powered customer communications platform",
     "auth_methods": [
       "OAUTH2",
@@ -624,15 +624,15 @@
   },
   {
     "app_name": "Vonage",
-    "category": "Communication Platform",
+    "category": "Communications and Messaging",
     "description": "Cloud communication platform for building voice, video, and messaging applications",
     "auth_methods": [
       "API_KEY",
       "JWT"
     ],
     "gating": "SELF_SERVE",
-    "api_type": "REST, WebSockets, and other",
-    "api_breadth": "Comprehensive",
+    "api_type": "REST",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "UNKNOWN",
     "main_blocker": "not enough verified facts to decide",
@@ -645,7 +645,7 @@
   },
   {
     "app_name": "Google Ads",
-    "category": "advertising",
+    "category": "Marketing and Social",
     "description": "Create and manage ads that reach users looking for your products or services on Google Search, Display, YouTube and more.",
     "auth_methods": [
       "OAUTH2"
@@ -667,14 +667,14 @@
   },
   {
     "app_name": "Meta Ads",
-    "category": "Marketing API",
+    "category": "Marketing and Social",
     "description": "A collection of Graph API endpoints for advertising across Meta technologies",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "FREE_WITH_APPROVAL",
     "api_type": "GRAPHQL",
-    "api_breadth": "Comprehensive, with multiple endpoints for advertising and commerce",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_WITH_CAVEATS",
     "main_blocker": "credentials require an approval or app review step",
@@ -687,7 +687,7 @@
   },
   {
     "app_name": "LinkedIn Ads",
-    "category": "AI agent toolkit",
+    "category": "Marketing and Social",
     "description": "Create LinkedIn marketing campaigns, report campaign performance, manage leads, and grow a company Page.",
     "auth_methods": [
       "OAUTH2"
@@ -709,13 +709,13 @@
   },
   {
     "app_name": "GoHighLevel",
-    "category": "API Design and Documentation",
+    "category": "Marketing and Social",
     "description": "API key authentication is a simple way to secure access to APIs, but has drawbacks and tradeoffs.",
     "auth_methods": [
       "API_KEY",
       "BASIC",
       "OAUTH",
-      "BEARER"
+      "TOKEN"
     ],
     "gating": "UNKNOWN",
     "api_type": "REST",
@@ -732,7 +732,7 @@
   },
   {
     "app_name": "Mailchimp",
-    "category": "Marketing and E-commerce",
+    "category": "Marketing and Social",
     "description": "Mailchimp’s developer tools provide everything you need to integrate your data with intelligent marketing tools and event-driven transactional email and SMS.",
     "auth_methods": [
       "API_KEY",
@@ -753,7 +753,7 @@
   },
   {
     "app_name": "Klaviyo",
-    "category": "Marketing Automation",
+    "category": "Marketing and Social",
     "description": "Create apps and integrations using Klaviyo's API that help your business grow.",
     "auth_methods": [
       "OAUTH2",
@@ -776,14 +776,14 @@
   },
   {
     "app_name": "systeme.io",
-    "category": "online business management",
+    "category": "Marketing and Social",
     "description": "a platform for sales funnels, email marketing, online courses, selling online, blogging, and sales funnels",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "a carefully selected set of features",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -796,7 +796,7 @@
   },
   {
     "app_name": "Pinterest",
-    "category": "Social Media",
+    "category": "Marketing and Social",
     "description": "One API to seamlessly integrate with Pinterest Securely plan content, manage ads, upload product feeds, and more.",
     "auth_methods": [
       "OAUTH2"
@@ -816,7 +816,7 @@
   },
   {
     "app_name": "Threads",
-    "category": "Social Media",
+    "category": "Marketing and Social",
     "description": "Create and publish posts, retrieve media and profiles, moderate replies, and access insights.",
     "auth_methods": [
       "OAUTH2"
@@ -838,7 +838,7 @@
   },
   {
     "app_name": "SendGrid",
-    "category": "Email API and Email Marketing",
+    "category": "Marketing and Social",
     "description": "Send email on a world-class platform that delivers more than 200 billion emails every month—and explore the rest of the Twilio Platform to build a complete solution for verification and identity, alerts, support and sales, and more.",
     "auth_methods": [
       "API_KEY",
@@ -859,19 +859,19 @@
   },
   {
     "app_name": "Shopify",
-    "category": "E-commerce",
-    "description": "Shopify's platform for developers to build apps, customize storefronts, and extend Shopify's core functionality.",
+    "category": "Ecommerce",
+    "description": "Shopify's platform for developers to build apps, customize storefronts, and extend Shopify's core functionality",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
     "api_type": "BOTH",
-    "api_breadth": "extensive",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": 1.0,
+    "status": "VERIFIED",
+    "confidence": 0.94,
     "evidence_urls": [
       "https://shopify.dev",
       "https://shopify.dev/docs/api/usage/authentication",
@@ -880,7 +880,7 @@
   },
   {
     "app_name": "WooCommerce",
-    "category": "E-commerce",
+    "category": "Ecommerce",
     "description": "Programmatic APIs to interact with WooCommerce store data",
     "auth_methods": [
       "API_KEY",
@@ -903,7 +903,7 @@
   },
   {
     "app_name": "BigCommerce",
-    "category": "E-commerce",
+    "category": "Ecommerce",
     "description": "BigCommerce is a leading e-commerce platform that empowers businesses to build, run, and grow their online stores.",
     "auth_methods": [
       "OAUTH2",
@@ -924,7 +924,7 @@
   },
   {
     "app_name": "Salesforce Commerce Cloud",
-    "category": "AI agent toolkit",
+    "category": "Ecommerce",
     "description": "Salesforce Commerce Cloud is a cloud-based platform for building and managing e-commerce experiences. It provides a range of APIs and tools for developers to integrate with the platform and build custom applications.",
     "auth_methods": [
       "OAUTH2",
@@ -932,7 +932,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "broad public API",
+    "api_breadth": "broad",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -945,7 +945,7 @@
   },
   {
     "app_name": "Magento",
-    "category": "commerce platform",
+    "category": "Ecommerce",
     "description": "Customize and extend Adobe Commerce to support multichannel, global commerce for B2B and B2C, and integrate with backend systems.",
     "auth_methods": [
       "OAUTH2",
@@ -954,7 +954,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "wide array of tasks",
+    "api_breadth": "broad",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -967,7 +967,7 @@
   },
   {
     "app_name": "Squarespace",
-    "category": "Website Builder",
+    "category": "Ecommerce",
     "description": "Easily create your own website with a professionally designed template or use Squarespace's AI website builder to get started in minutes.",
     "auth_methods": [
       "API_KEY",
@@ -990,14 +990,14 @@
   },
   {
     "app_name": "Ecwid",
-    "category": "ecommerce",
+    "category": "Ecommerce",
     "description": "Build custom storefronts, personalize shopping experience, or integrate with any external services",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "full access to store data, payment and shipping methods, and storefront settings",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1011,7 +1011,7 @@
   },
   {
     "app_name": "Gumroad",
-    "category": "E-commerce",
+    "category": "Ecommerce",
     "description": "Sell digital products, such as video lessons, monthly subscriptions, and more, directly to customers.",
     "auth_methods": [
       "OAUTH2"
@@ -1032,14 +1032,14 @@
   },
   {
     "app_name": "Amazon Selling Partner",
-    "category": "AI agent toolkit",
+    "category": "Ecommerce",
     "description": "Build automated solutions for your own sales in the Amazon store, or create and list apps for other Amazon sellers in the Selling Partner Appstore.",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Programmatically access data for orders, shipments, payments, and much more, including access to restricted data and grantless operations.",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1052,7 +1052,7 @@
   },
   {
     "app_name": "fanbasis",
-    "category": "E-commerce",
+    "category": "Ecommerce",
     "description": "One place to create, sell, and get paid, with payments built in.",
     "auth_methods": [
       "API_KEY",
@@ -1073,14 +1073,14 @@
   },
   {
     "app_name": "DataForSEO",
-    "category": "SEO",
+    "category": "Data SEO and Scraping",
     "description": "Try now Contact us DataForSEO APIs in Figures SERPs Google 534968327 Updated last 30d: 195179833 Keywords Google 8112322243 Updated last 30d: 6662776899 Live Backlinks 1905248028312 Crawled last 24h: 8637101827 DataForSEO APIs SERP API Keyword Data API Backlinks API Domain Analytics API On-Page API DataForSEO Labs API Business Data API Merchant API App Data API Content Analysis API AI Optimization Data API SERP API Your one-stop datasource of structured SERP data Build rank tracking and SEO competitor analysis tools faster using the most comprehensive source of real-time SERP",
     "auth_methods": [
       "BASIC"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "comprehensive source of real-time SERP data",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1094,11 +1094,11 @@
   },
   {
     "app_name": "SE Ranking",
-    "category": "SEO & GEO Data at Scale API",
+    "category": "Data SEO and Scraping",
     "description": "Automate SEO & GEO workflows with SE Ranking’s SEO API",
     "auth_methods": [
       "API_KEY",
-      "AUTHORIZATION_HEADER"
+      "TOKEN"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
@@ -1116,7 +1116,7 @@
   },
   {
     "app_name": "Ahrefs",
-    "category": "AI/ML",
+    "category": "Data SEO and Scraping",
     "description": "Research keywords, analyze backlinks, track rankings, and monitor brand visibility across traditional search and AI platforms.",
     "auth_methods": [
       "API_KEY"
@@ -1136,14 +1136,14 @@
   },
   {
     "app_name": "MrScraper",
-    "category": "Web Scraping",
+    "category": "Data SEO and Scraping",
     "description": "MrScraper is an all-in-one web scraping platform that allows users to scrape data quickly and efficiently.",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Comprehensive API with endpoints for authentication, pagination, error handling, and scraper management.",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1158,7 +1158,7 @@
   },
   {
     "app_name": "Apify",
-    "category": "AI agent toolkit",
+    "category": "Data SEO and Scraping",
     "description": "Apify is a platform for web scraping, data extraction, and AI agent development. It provides a range of tools and services, including Actors, which are reusable pieces of code that can be used to extract data from websites, and the MCP server, which allows developers to discover and use Actors with AI agents and LLMs.",
     "auth_methods": [
       "API_KEY",
@@ -1179,14 +1179,14 @@
   },
   {
     "app_name": "Firecrawl",
-    "category": "Web Data API",
+    "category": "Data SEO and Scraping",
     "description": "Search the web and get full page content from results, scrape extract content from any webpage in markdown or json format, crawl entire websites, extract structured data from entire webpages using natural language, map get a complete list of URLs from any website quickly and reliably.",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "full page content from results, extract content from any webpage, crawl entire websites, extract structured data from entire webpages, map get a complete list of URLs from any website",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1200,7 +1200,7 @@
   },
   {
     "app_name": "Bright Data",
-    "category": "Web Data Platform",
+    "category": "Data SEO and Scraping",
     "description": "Collect, process and scale access to public web data",
     "auth_methods": [
       "API_KEY",
@@ -1208,7 +1208,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "petabyte-scale",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1222,7 +1222,7 @@
   },
   {
     "app_name": "Sherlock",
-    "category": "OSINT",
+    "category": "Data SEO and Scraping",
     "description": "Hunt down social media accounts by username across 400+ social networks",
     "auth_methods": [
       "API_KEY",
@@ -1230,7 +1230,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "400+ social networks",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1243,15 +1243,15 @@
   },
   {
     "app_name": "Waterfall.io",
-    "category": "Data Enrichment",
+    "category": "Data SEO and Scraping",
     "description": "Connects B2B companies with verified contact data, email verification, and more",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "modular & scalable, unified data schema, high rate limits, 99.99% uptime",
-    "mcp_availability": "UNOFFICIAL",
+    "api_breadth": "UNKNOWN",
+    "mcp_availability": "COMMUNITY",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
     "status": "VERIFIED",
@@ -1264,7 +1264,7 @@
   },
   {
     "app_name": "Clay",
-    "category": "GTM (Go-To-Market) data platform",
+    "category": "Data SEO and Scraping",
     "description": "Build systems to grow revenue",
     "auth_methods": [
       "API_KEY",
@@ -1287,7 +1287,7 @@
   },
   {
     "app_name": "GitHub",
-    "category": "Development",
+    "category": "Developer and Infra",
     "description": "GitHub REST API is a public API for creating integrations, retrieving data, and automating workflows.",
     "auth_methods": [
       "PASSWORD",
@@ -1309,7 +1309,7 @@
   },
   {
     "app_name": "Vercel",
-    "category": "API Management",
+    "category": "Developer and Infra",
     "description": "Interact programmatically with your Vercel account using the SDK or direct HTTP requests.",
     "auth_methods": [
       "OAUTH2"
@@ -1329,7 +1329,7 @@
   },
   {
     "app_name": "Netlify",
-    "category": "API Gateway",
+    "category": "Developer and Infra",
     "description": "Build custom agents into your applications without opening accounts with LLM providers, managing multiple spend outlets, or messing with environment variables.",
     "auth_methods": [
       "OAUTH2",
@@ -1351,7 +1351,7 @@
   },
   {
     "app_name": "Cloudflare",
-    "category": "API Management",
+    "category": "Developer and Infra",
     "description": "Cloudflare API provides access to Cloudflare's features and services, allowing developers to automate tasks, retrieve data, and perform actions programmatically.",
     "auth_methods": [
       "API_KEY",
@@ -1371,7 +1371,7 @@
   },
   {
     "app_name": "Supabase",
-    "category": "Database as a Service",
+    "category": "Developer and Infra",
     "description": "Supabase is a full Postgres database for every project with Realtime functionality, database backups, extensions, and more.",
     "auth_methods": [
       "EMAIL_PASSWORD",
@@ -1381,8 +1381,8 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "BOTH",
-    "api_breadth": "auto-generated, instant, self-documenting, secure, fast",
-    "mcp_availability": "https://mcp.supabase.com/mcp?project_ref=${SUPABASE_PROJECT_REF}",
+    "api_breadth": "UNKNOWN",
+    "mcp_availability": "UNKNOWN",
     "buildability": "UNKNOWN",
     "main_blocker": "not enough verified facts to decide",
     "status": "VERIFIED",
@@ -1393,7 +1393,7 @@
   },
   {
     "app_name": "Neo4j",
-    "category": "Database",
+    "category": "Developer and Infra",
     "description": "Graph database",
     "auth_methods": [
       "BASIC",
@@ -1418,7 +1418,7 @@
   },
   {
     "app_name": "Snowflake",
-    "category": "Data Platform",
+    "category": "Developer and Infra",
     "description": "Discover reference architectures, industry-specific use cases and solutions best practices from Snowflake experts and partners.",
     "auth_methods": [
       "PASSWORD",
@@ -1443,7 +1443,7 @@
   },
   {
     "app_name": "MongoDB Atlas",
-    "category": "Database Management",
+    "category": "Developer and Infra",
     "description": "Programmatic access to MongoDB Atlas for administrative tasks and deployment management",
     "auth_methods": [
       "OAUTH2",
@@ -1451,7 +1451,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Comprehensive administrative API for Atlas clusters",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1464,7 +1464,7 @@
   },
   {
     "app_name": "Datadog",
-    "category": "Monitoring and Analytics",
+    "category": "Developer and Infra",
     "description": "Datadog provides a platform for monitoring and analytics of applications and infrastructure.",
     "auth_methods": [
       "OAUTH2",
@@ -1477,7 +1477,7 @@
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
     "status": "RESEARCHED",
-    "confidence": 0.97,
+    "confidence": 0.98,
     "evidence_urls": [
       "https://docs.datadoghq.com/",
       "https://docs.datadoghq.com/api/latest/authentication/",
@@ -1486,7 +1486,7 @@
   },
   {
     "app_name": "Sentry",
-    "category": "API",
+    "category": "Developer and Infra",
     "description": "The Sentry web API is used to access the Sentry platform programmatically. You can use the APIs to manage account-level resources, like organizations and teams, as well as manage and export data.",
     "auth_methods": [
       "API_KEY",
@@ -1508,7 +1508,7 @@
   },
   {
     "app_name": "Notion",
-    "category": "API toolkit",
+    "category": "Productivity and PM",
     "description": "Connect your workspace to external tools and automate workflows through code.",
     "auth_methods": [
       "OAUTH2",
@@ -1519,7 +1519,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "nearly everything in a workspace",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1531,7 +1531,7 @@
   },
   {
     "app_name": "Airtable",
-    "category": "Development Platform",
+    "category": "Productivity and PM",
     "description": "Build custom tools, integrations, and visualizations on top of Airtable's data",
     "auth_methods": [
       "TOKEN"
@@ -1552,7 +1552,7 @@
   },
   {
     "app_name": "Linear",
-    "category": "AI Agent Toolkit",
+    "category": "Productivity and PM",
     "description": "Use the GraphQL API to query and mutate data, authenticate with OAuth 2.0 or personal API keys, and integrate an AI agent into Linear",
     "auth_methods": [
       "OAUTH2",
@@ -1572,7 +1572,7 @@
   },
   {
     "app_name": "Jira",
-    "category": "AI agent toolkit",
+    "category": "Productivity and PM",
     "description": "Integrate anything, bring your organization's unique data to Jira and Confluence, connect backend services, specialized tools, and more, all in one unified experience",
     "auth_methods": [
       "API_KEY",
@@ -1594,7 +1594,7 @@
   },
   {
     "app_name": "Asana",
-    "category": "AI/ML",
+    "category": "Productivity and PM",
     "description": "Integrate tools, automate actions, and customize your workflows with Asana’s developer platform.",
     "auth_methods": [
       "OAUTH2",
@@ -1618,13 +1618,13 @@
   },
   {
     "app_name": "Monday.com",
-    "category": "AI Agent Toolkit",
+    "category": "Productivity and PM",
     "description": "Turn agents into teammates, connect them to the platform, bring your own, collaborate, use them anywhere, govern everything, connect to any LLM, run agents from your code, and connect to your monday data from anywhere",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
-    "api_type": "GraphQL",
+    "api_type": "GRAPHQL",
     "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "UNKNOWN",
@@ -1639,7 +1639,7 @@
   },
   {
     "app_name": "ClickUp",
-    "category": "AI agent toolkit",
+    "category": "Productivity and PM",
     "description": "Build integrations and apps with our Public API. Connect your AI with ClickUp using our MCP Server.",
     "auth_methods": [
       "API_KEY",
@@ -1647,7 +1647,7 @@
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Public API",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1660,7 +1660,7 @@
   },
   {
     "app_name": "Coda",
-    "category": "API",
+    "category": "Productivity and PM",
     "description": "List and search documents, create new docs and copy existing ones, share and publish docs, discover pages, tables, formulas, and controls, read, insert, upsert, update, and delete rows",
     "auth_methods": [
       "API_KEY"
@@ -1680,7 +1680,7 @@
   },
   {
     "app_name": "Smartsheet",
-    "category": "Productivity",
+    "category": "Productivity and PM",
     "description": "Smartsheet is a cloud-based work management platform that helps teams plan, track, and report on work.",
     "auth_methods": [
       "OAUTH2"
@@ -1701,10 +1701,10 @@
   },
   {
     "app_name": "Harvest",
-    "category": "Accounting and Time Tracking",
+    "category": "Productivity and PM",
     "description": "The Harvest API allows developers to access and manipulate data from Harvest, a time tracking and accounting platform.",
     "auth_methods": [
-      "PERSONAL_ACCESS_TOKEN",
+      "TOKEN",
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
@@ -1722,7 +1722,7 @@
   },
   {
     "app_name": "Stripe",
-    "category": "Payment Processing",
+    "category": "Finance and Fintech",
     "description": "The Stripe API is a payment processing API that allows developers to integrate payment functionality into their applications.",
     "auth_methods": [
       "API_KEY"
@@ -1742,7 +1742,7 @@
   },
   {
     "app_name": "Plaid",
-    "category": "Financial Services",
+    "category": "Finance and Fintech",
     "description": "Build with Plaid to connect users' accounts, retrieve bank account information, and more",
     "auth_methods": [
       "OAUTH2"
@@ -1764,14 +1764,14 @@
   },
   {
     "app_name": "Binance",
-    "category": "Trading",
+    "category": "Finance and Fintech",
     "description": "Binance API trading data and Zipline bundles",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Extensive",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1786,7 +1786,7 @@
   },
   {
     "app_name": "Paygent Connect",
-    "category": "AI cost tracking and management",
+    "category": "Finance and Fintech",
     "description": "Paygent is an SDK that tracks per-user LLM costs and enforces spending limits before calls reach OpenAI or Anthropic.",
     "auth_methods": [
       "API_KEY"
@@ -1797,18 +1797,18 @@
     "mcp_availability": "UNKNOWN",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": 0.84,
+    "status": "VERIFIED",
+    "confidence": 0.83,
     "evidence_urls": [
       "https://github.com/FoxRick/paygentic-sdk"
     ]
   },
   {
     "app_name": "iPayX",
-    "category": "FX Audit and MCP",
+    "category": "Finance and Fintech",
     "description": "Audit-grade FX proof your sales team — or your AI agents — deliver in under 30 seconds.",
     "auth_methods": [
-      "BEARER"
+      "TOKEN"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
@@ -1824,14 +1824,14 @@
   },
   {
     "app_name": "QuickBooks",
-    "category": "Accounting",
+    "category": "Finance and Fintech",
     "description": "Create the next big thing Start building your Intuit-powered app today. Get started Explore all APIs",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Explore all APIs",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1844,7 +1844,7 @@
   },
   {
     "app_name": "Xero",
-    "category": "Accounting",
+    "category": "Finance and Fintech",
     "description": "Xero Developer Platform provides tools and resources to help you build and test your Xero integration faster.",
     "auth_methods": [
       "OAUTH2"
@@ -1865,7 +1865,7 @@
   },
   {
     "app_name": "Brex",
-    "category": "Financial API",
+    "category": "Finance and Fintech",
     "description": "Brex is a unified spend platform that allows finance teams to control all of their spend in one place, using the Brex API to power internal tools and create custom workflows.",
     "auth_methods": [
       "API_KEY"
@@ -1885,10 +1885,10 @@
   },
   {
     "app_name": "Ramp",
-    "category": "Financial API",
+    "category": "Finance and Fintech",
     "description": "The Ramp API allows developers to integrate financial services into their applications.",
     "auth_methods": [
-      "auth_methods"
+      "UNKNOWN"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
@@ -1905,14 +1905,14 @@
   },
   {
     "app_name": "PitchBook",
-    "category": "Financial Intelligence",
+    "category": "Finance and Fintech",
     "description": "PitchBook is a financial intelligence platform that provides data on companies, investors, and deals.",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "SDK_ONLY",
-    "api_breadth": "comprehensive database of private equity, venture capital, and M&A activity",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_WITH_CAVEATS",
     "main_blocker": "no documented HTTP API, SDK only",
@@ -1926,14 +1926,14 @@
   },
   {
     "app_name": "NotebookLM",
-    "category": "AI agent toolkit",
+    "category": "AI Research and Media",
     "description": "Gemini is a platform that helps developers and businesses build applications with AI models, including a notebook management API",
     "auth_methods": [
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "REST",
-    "api_breadth": "Notebook management API",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
@@ -1946,7 +1946,7 @@
   },
   {
     "app_name": "Otter AI",
-    "category": "AI-powered meeting transcription and collaboration tool",
+    "category": "AI Research and Media",
     "description": "Otter transcribes every meeting, turning it into searchable knowledge that powers your workflow",
     "auth_methods": [
       "API_KEY"
@@ -1966,7 +1966,7 @@
   },
   {
     "app_name": "Fathom",
-    "category": "AI Notetaker",
+    "category": "AI Research and Media",
     "description": "AI notetaking that summarizes meetings so you can focus on the conversation.",
     "auth_methods": [
       "API_KEY"
@@ -1985,19 +1985,19 @@
   },
   {
     "app_name": "Consensus",
-    "category": "AI research and knowledge",
+    "category": "AI Research and Media",
     "description": "Embed the intelligence of a Consensus Search into your internal tools, workflows, or apps to deliver trusted, high-quality references on demand.",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
-    "api_type": "REST",
-    "api_breadth": "search 200+ million peer-reviewed research papers",
+    "api_type": "GRAPHQL",
+    "api_breadth": "UNKNOWN",
     "mcp_availability": "OFFICIAL",
-    "buildability": "BUILD_NOW",
-    "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": 0.9,
+    "buildability": "UNKNOWN",
+    "main_blocker": "not enough verified facts to decide",
+    "status": "VERIFIED",
+    "confidence": 0.84,
     "evidence_urls": [
       "https://consensus.app",
       "https://consensus.app/home/api/",
@@ -2007,7 +2007,7 @@
   },
   {
     "app_name": "Reducto",
-    "category": "Document Processing",
+    "category": "AI Research and Media",
     "description": "Automated intake pipelines, structured data extraction, document splitting, editing, and workflow orchestration.",
     "auth_methods": [
       "API_KEY"
@@ -2028,7 +2028,7 @@
   },
   {
     "app_name": "Devin",
-    "category": "AI software engineer",
+    "category": "AI Research and Media",
     "description": "Devin can handle most tasks, excluding extremely difficult tasks. It can write, run, and test code, and can be used to tackle Linear/Jira tickets, implement new features, repro and fix bugs, build internal tools, and more.",
     "auth_methods": [
       "OAUTH2",
@@ -2051,16 +2051,14 @@
   },
   {
     "app_name": "higgsfield",
-    "category": "AI-native creative suite",
+    "category": "AI Research and Media",
     "description": "Delivers comprehensive access to an extensive library of cutting-edge generative media models through a unified integration point.",
     "auth_methods": [
-      "MCP",
-      "CLI",
       "API_KEY"
     ],
     "gating": "SELF_SERVE",
     "api_type": "SDK_ONLY",
-    "api_breadth": "extensive library of cutting-edge generative media models",
+    "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_WITH_CAVEATS",
     "main_blocker": "no documented HTTP API, SDK only",
@@ -2074,15 +2072,15 @@
   },
   {
     "app_name": "Mermaid CLI",
-    "category": "Command line tool",
+    "category": "AI Research and Media",
     "description": "Converts Mermaid mmd Diagram File To SVG",
     "auth_methods": [
       "OAUTH2"
     ],
     "gating": "SELF_SERVE",
     "api_type": "SDK_ONLY",
-    "api_breadth": "Limited",
-    "mcp_availability": "true",
+    "api_breadth": "limited",
+    "mcp_availability": "UNKNOWN",
     "buildability": "BUILD_WITH_CAVEATS",
     "main_blocker": "no documented HTTP API, SDK only",
     "status": "VERIFIED",
@@ -2095,14 +2093,16 @@
   },
   {
     "app_name": "YouTube Transcript",
-    "category": null,
+    "category": "AI Research and Media",
     "description": null,
-    "auth_methods": [],
-    "gating": null,
-    "api_type": null,
-    "api_breadth": null,
-    "mcp_availability": null,
-    "buildability": null,
+    "auth_methods": [
+      "UNKNOWN"
+    ],
+    "gating": "UNKNOWN",
+    "api_type": "UNKNOWN",
+    "api_breadth": "UNKNOWN",
+    "mcp_availability": "UNKNOWN",
+    "buildability": "UNKNOWN",
     "main_blocker": null,
     "status": "UNRESOLVED",
     "confidence": null,
@@ -2110,17 +2110,23 @@
   },
   {
     "app_name": "Grain",
-    "category": null,
-    "description": null,
-    "auth_methods": [],
-    "gating": null,
-    "api_type": null,
-    "api_breadth": null,
-    "mcp_availability": null,
-    "buildability": null,
-    "main_blocker": null,
-    "status": "UNRESOLVED",
-    "confidence": null,
-    "evidence_urls": []
+    "category": "AI Research and Media",
+    "description": "Grain API allows developers to connect their meeting data to AI chat clients like Claude.ai for powerful workflows and analytics.",
+    "auth_methods": [
+      "OAUTH2",
+      "API_KEY"
+    ],
+    "gating": "SELF_SERVE",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "mcp_availability": "OFFICIAL",
+    "buildability": "BUILD_NOW",
+    "main_blocker": "NONE",
+    "status": "VERIFIED",
+    "confidence": 0.86,
+    "evidence_urls": [
+      "https://developers.grain.com",
+      "https://developers.grain.com/mcp"
+    ]
   }
 ]

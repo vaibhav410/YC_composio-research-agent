@@ -79,11 +79,14 @@ templates/     Jinja2 dashboard (single self-contained HTML)
 scripts/       CLI entrypoints per stage
 data/          apps.csv input, research.db, page cache
 output/        index.html, results.json, results_public.csv, results_public.json
+docs/          published copy of the dashboard + public dataset (GitHub Pages / Vercel)
 ```
 
 ## Configuration
 
 `config.yaml`: model name, requests per minute, pages per app, confidence threshold, audit sample size and seed.
+
+The dashboard ships a precompiled, minified Tailwind stylesheet (no CDN at runtime). If you add new utility classes to `templates/index.html.j2`, rebuild it with `npx tailwindcss` against the generated `output/index.html` and swap the `<style>` block.
 
 ## Design decisions
 

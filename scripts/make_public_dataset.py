@@ -56,6 +56,67 @@ CSV_HEADERS = [
 ]
 
 
+# --- value normalization ----------------------------------------------------
+# The extractor occasionally returns free-text or case-variant values. The
+# public dataset presents canonical enums; anything that cannot be mapped
+# without guessing becomes UNKNOWN (the evidence URLs remain for the reader).
+
+AUTH_TOKEN_SYNONYMS = {"BEARER", "ACCESS_TOKEN", "PERSONAL_ACCESS_TOKEN", "AUTHORIZATION_HEADER"}
+AUTH_JUNK = {"AUTH_METHODS", "MCP", "CLI"}
+MCP_CANON = {"OFFICIAL", "COMMUNITY", "NONE_FOUND", "UNKNOWN"}
+API_CANON = {"REST", "GRAPHQL", "BOTH", "SDK_ONLY", "NONE", "UNKNOWN"}
+
+
+def normalize_auth(methods) -> list:
+    out = []
+    for m in methods or []:
+        if not isinstance(m, str):  # None / pandas NaN
+            m = ""
+        m = m.strip().upper().replace(" ", "_")
+        if not m or m in AUTH_JUNK:
+            continue
+        if m in AUTH_TOKEN_SYNONYMS:
+            m = "TOKEN"
+        if m not in out:
+            out.append(m)
+    return out or ["UNKNOWN"]
+
+
+def normalize_api_type(v) -> str:
+    u = (v or "").strip().upper().replace(" ", "_")
+    if u in API_CANON:
+        return u
+    if "REST" in u and "GRAPHQL" in u:
+        return "BOTH"
+    if "REST" in u:
+        return "REST"
+    if "GRAPHQL" in u:
+        return "GRAPHQL"
+    return "UNKNOWN"
+
+
+def normalize_breadth(v) -> str:
+    s = (v or "").strip().lower()
+    if s in ("comprehensive", "broad", "limited", "unknown"):
+        return s.upper() if s == "unknown" else s
+    if any(w in s for w in ("comprehensive", "full", "complete", "extensive", "everything")):
+        return "comprehensive"
+    if any(w in s for w in ("broad", "wide")):
+        return "broad"
+    if any(w in s for w in ("limited", "selected", "narrow")):
+        return "limited"
+    return "UNKNOWN"
+
+
+def normalize_mcp(v) -> str:
+    u = (v or "").strip().upper()
+    if u in MCP_CANON:
+        return u
+    if u == "UNOFFICIAL":
+        return "COMMUNITY"
+    return "UNKNOWN"
+
+
 def to_public(app: dict) -> dict:
     urls = []
     for url in (app.get("evidence") or {}).values():
@@ -63,14 +124,16 @@ def to_public(app: dict) -> dict:
             urls.append(url)
     return {
         "app_name": app.get("name", ""),
-        "category": app.get("category", ""),
+        # curated research-set taxonomy (10 categories), matching the
+        # Category Distribution chart; falls back to the extracted value
+        "category": app.get("category_hint") or app.get("category") or "UNKNOWN",
         "description": app.get("description", ""),
-        "auth_methods": app.get("auth_methods") or [],
-        "gating": app.get("gating", ""),
-        "api_type": app.get("api_type", ""),
-        "api_breadth": app.get("api_breadth", ""),
-        "mcp_availability": app.get("mcp_available", ""),
-        "buildability": app.get("buildability", ""),
+        "auth_methods": normalize_auth(app.get("auth_methods")),
+        "gating": app.get("gating") or "UNKNOWN",
+        "api_type": normalize_api_type(app.get("api_type")),
+        "api_breadth": normalize_breadth(app.get("api_breadth")),
+        "mcp_availability": normalize_mcp(app.get("mcp_available")),
+        "buildability": app.get("buildability") or "UNKNOWN",
         "main_blocker": app.get("main_blocker", ""),
         "status": app.get("status", ""),
         "confidence": app.get("confidence", ""),
