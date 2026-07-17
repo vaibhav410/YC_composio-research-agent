@@ -222,19 +222,20 @@
     "category": "Support and Helpdesk",
     "description": "AI-first service platform for customer and employee service",
     "auth_methods": [
-      "UNKNOWN"
+      "API_TOKENS,_OAUTH_ACCESS_TOKENS,_GLOBAL_OAUTH_ACCESS_TOKENS,_JWT"
     ],
     "gating": "SELF_SERVE",
-    "api_type": "UNKNOWN",
+    "api_type": "GRAPHQL",
     "api_breadth": "comprehensive",
     "mcp_availability": "OFFICIAL",
     "buildability": "UNKNOWN",
     "main_blocker": "not enough verified facts to decide",
-    "status": "RESEARCHED",
-    "confidence": 0.81,
+    "status": "VERIFIED",
+    "confidence": 0.84,
     "evidence_urls": [
       "https://zendesk.com",
-      "https://support.zendesk.com/hc/en-us/articles/4408831452954-How-can-I-authenticate-API-requests"
+      "https://support.zendesk.com/hc/en-us/articles/4408831452954-How-can-I-authenticate-API-requests",
+      "https://developer.zendesk.com/api-reference/sales-crm/search/graphql/"
     ]
   },
   {
@@ -551,8 +552,8 @@
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": 0.86,
+    "status": "VERIFIED",
+    "confidence": 0.76,
     "evidence_urls": [
       "https://discord.com/developers/docs/social-sdk/authentication.html",
       "https://discord.com/",
@@ -1473,11 +1474,11 @@
     "gating": "SELF_SERVE",
     "api_type": "REST",
     "api_breadth": "comprehensive",
-    "mcp_availability": "OFFICIAL",
+    "mcp_availability": "UNKNOWN",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": 0.98,
+    "status": "VERIFIED",
+    "confidence": 0.92,
     "evidence_urls": [
       "https://docs.datadoghq.com/",
       "https://docs.datadoghq.com/api/latest/authentication/",
@@ -2094,19 +2095,22 @@
   {
     "app_name": "YouTube Transcript",
     "category": "AI Research and Media",
-    "description": null,
+    "description": "Extract YouTube video transcripts, search videos, browse channels, and extract playlists via REST API or YouTube MCP",
     "auth_methods": [
-      "UNKNOWN"
+      "API_KEY"
     ],
-    "gating": "UNKNOWN",
-    "api_type": "UNKNOWN",
-    "api_breadth": "UNKNOWN",
-    "mcp_availability": "UNKNOWN",
-    "buildability": "UNKNOWN",
-    "main_blocker": null,
-    "status": "UNRESOLVED",
-    "confidence": null,
-    "evidence_urls": []
+    "gating": "SELF_SERVE",
+    "api_type": "REST",
+    "api_breadth": "comprehensive",
+    "mcp_availability": "OFFICIAL",
+    "buildability": "BUILD_NOW",
+    "main_blocker": "NONE",
+    "status": "VERIFIED",
+    "confidence": 0.86,
+    "evidence_urls": [
+      "https://transcriptapi.com",
+      "https://transcriptapi.com/docs/api/"
+    ]
   },
   {
     "app_name": "Grain",

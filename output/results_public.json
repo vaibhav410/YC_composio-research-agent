@@ -552,8 +552,8 @@
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": 0.77,
+    "status": "VERIFIED",
+    "confidence": 0.76,
     "evidence_urls": [
       "https://discord.com/developers/docs/social-sdk/authentication.html",
       "https://discord.com/",
@@ -1474,11 +1474,11 @@
     "gating": "SELF_SERVE",
     "api_type": "REST",
     "api_breadth": "comprehensive",
-    "mcp_availability": "OFFICIAL",
+    "mcp_availability": "UNKNOWN",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": 0.98,
+    "status": "VERIFIED",
+    "confidence": 0.92,
     "evidence_urls": [
       "https://docs.datadoghq.com/",
       "https://docs.datadoghq.com/api/latest/authentication/",
@@ -2105,8 +2105,8 @@
     "mcp_availability": "OFFICIAL",
     "buildability": "BUILD_NOW",
     "main_blocker": "NONE",
-    "status": "RESEARCHED",
-    "confidence": null,
+    "status": "VERIFIED",
+    "confidence": 0.86,
     "evidence_urls": [
       "https://transcriptapi.com",
       "https://transcriptapi.com/docs/api/"
